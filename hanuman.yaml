@@ -23,7 +23,7 @@ stringData:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-hostpath-manesha
+  name: pv-hostpath-hello
 spec:
   storageClassName: manual
   capacity:
@@ -31,14 +31,14 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/tmp/mongodata-manesha"
+    path: "/tmp/mongodata"
 
 ---
 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-hostpath-manesha
+  name: pvc-hostpath-hello
   namespace: ram
 spec:
   storageClassName: manual
@@ -136,7 +136,7 @@ spec:
       volumes:
         - name: mongodb-pvc
           persistentVolumeClaim:
-            claimName: pvc-hostpath-manesha
+            claimName: pvc-hostpath-hello
       containers:
         - name: mongodbcontainer
           image: mongo
